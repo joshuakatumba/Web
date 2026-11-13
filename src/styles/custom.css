@@ -1,0 +1,51 @@
+/* Minimal custom overrides to complement Shopper theme.bundle.css */
+
+.hero-overlay {
+  position: relative;
+  background-position: center;
+  background-size: cover;
+}
+
+.hero-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.56);
+}
+
+.hero-overlay > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.service-card-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.about-feature-img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+}
+
+.nav-link.active {
+  color: var(--bs-primary) !important;
+  font-weight: 500;
+}
+
+.honeypot-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+@media (max-width: 767.98px) {
+  .about-feature-img {
+    height: 260px;
+  }
+}
+
