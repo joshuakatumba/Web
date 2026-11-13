@@ -1,13 +1,21 @@
 import { Link } from 'react-router-dom';
 import { businessConfig } from '../config/businessConfig';
-import { servicesConfig } from '../config/servicesConfig';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useServices } from '../hooks/useServices';
 
 export default function HomePage() {
   useDocumentTitle('Home');
 
-  const { hero, homeIntro, reasonsToChoose, contact } = businessConfig;
-  const featuredServices = servicesConfig.slice(0, 4);
+  const {
+    hero,
+    homeIntro,
+    homeServices,
+    homeContactCta,
+    reasonsToChoose,
+    contact,
+  } = businessConfig;
+  const { services } = useServices();
+  const featuredServices = services.slice(0, 4);
 
   return (
     <>
@@ -76,8 +84,8 @@ export default function HomePage() {
               <p className="heading-xxs text-gray-400 mb-3">{homeIntro.eyebrow}</p>
               <h2 className="mb-4">{homeIntro.title}</h2>
               <p className="text-gray-500 mb-6">{homeIntro.description}</p>
-              <Link className="btn btn-outline-dark" to="/about">
-                Learn More About Us
+              <Link className="btn btn-outline-dark" to={homeIntro.ctaTo}>
+                {homeIntro.ctaLabel}
                 <i className="fe fe-arrow-right ms-2" aria-hidden="true" />
               </Link>
             </div>
@@ -90,11 +98,9 @@ export default function HomePage() {
         <div className="container">
           <div className="row justify-content-center mb-8">
             <div className="col-12 col-md-8 text-center">
-              <p className="heading-xxs text-gray-400 mb-2">What We Offer</p>
-              <h2 className="mb-3">Our Core Services</h2>
-              <p className="text-gray-500 mb-0">
-                Explore our services below or send an enquiry to discuss your specific needs.
-              </p>
+              <p className="heading-xxs text-gray-400 mb-2">{homeServices.eyebrow}</p>
+              <h2 className="mb-3">{homeServices.title}</h2>
+              <p className="text-gray-500 mb-0">{homeServices.description}</p>
             </div>
           </div>
 
@@ -132,13 +138,13 @@ export default function HomePage() {
             </div>
           ) : (
             <div className="text-center py-6">
-              <p className="text-muted mb-0">Services are currently being updated.</p>
+              <p className="text-muted mb-0">{homeServices.emptyMessage}</p>
             </div>
           )}
 
           <div className="text-center mt-8">
-            <Link className="btn btn-dark" to="/services">
-              View All Services
+            <Link className="btn btn-dark" to={homeServices.ctaTo}>
+              {homeServices.ctaLabel}
               <i className="fe fe-arrow-right ms-2" aria-hidden="true" />
             </Link>
           </div>
@@ -153,16 +159,16 @@ export default function HomePage() {
               <div className="card border bg-light p-6 p-md-9">
                 <div className="row align-items-center gy-5">
                   <div className="col-12 col-md-7">
-                    <p className="heading-xxs text-primary mb-2">Start a Conversation</p>
-                    <h2 className="mb-3">Ready to Discuss Your Requirements?</h2>
+                    <p className="heading-xxs text-primary mb-2">{homeContactCta.eyebrow}</p>
+                    <h2 className="mb-3">{homeContactCta.title}</h2>
                     <p className="text-gray-500 mb-0">
-                      Send us an enquiry online or reach out using our direct contact channels.
+                      {homeContactCta.description}
                       {contact.email ? ` You can also email us at ${contact.email}.` : ''}
                     </p>
                   </div>
                   <div className="col-12 col-md-5 text-md-end">
-                    <Link className="btn btn-primary btn-lg" to="/contact">
-                      Contact Us Today
+                    <Link className="btn btn-primary btn-lg" to={homeContactCta.ctaTo}>
+                      {homeContactCta.ctaLabel}
                       <i className="fe fe-mail ms-2" aria-hidden="true" />
                     </Link>
                   </div>
@@ -175,4 +181,3 @@ export default function HomePage() {
     </>
   );
 }
-

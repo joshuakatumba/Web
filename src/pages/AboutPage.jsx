@@ -41,7 +41,7 @@ export default function AboutPage() {
               />
             </div>
             <div className="col-12 col-lg-5 offset-lg-1">
-              <p className="heading-xxs text-gray-400 mb-2">Our Story</p>
+              <p className="heading-xxs text-gray-400 mb-2">{about.storyEyebrow}</p>
               <h2 className="mb-4">{about.backgroundTitle}</h2>
               {about.backgroundParagraphs.map((paragraph, idx) => (
                 <p className="text-gray-500 mb-4" key={idx}>
@@ -73,7 +73,7 @@ export default function AboutPage() {
                 <div className="mb-4">
                   <i className="fe fe-target fs-lg text-primary" aria-hidden="true" />
                 </div>
-                <h3 className="mb-3">Our Mission</h3>
+                <h3 className="mb-3">{about.missionTitle}</h3>
                 <p className="text-gray-500 mb-0">{about.mission}</p>
               </div>
             </div>
@@ -82,7 +82,7 @@ export default function AboutPage() {
                 <div className="mb-4">
                   <i className="fe fe-eye fs-lg text-primary" aria-hidden="true" />
                 </div>
-                <h3 className="mb-3">Our Vision</h3>
+                <h3 className="mb-3">{about.visionTitle}</h3>
                 <p className="text-gray-500 mb-0">{about.vision}</p>
               </div>
             </div>
@@ -96,8 +96,8 @@ export default function AboutPage() {
           <div className="container">
             <div className="row justify-content-center mb-8">
               <div className="col-12 col-md-8 text-center">
-                <p className="heading-xxs text-gray-400 mb-2">Principles</p>
-                <h2 className="mb-0">Our Core Values</h2>
+                <p className="heading-xxs text-gray-400 mb-2">{about.valuesEyebrow}</p>
+                <h2 className="mb-0">{about.valuesTitle}</h2>
               </div>
             </div>
 
@@ -121,16 +121,14 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="py-10 bg-light border-top">
         <div className="container text-center">
-          <h2 className="mb-3">Interested in Working Together?</h2>
-          <p className="text-gray-500 mb-6">
-            Browse our services or contact us directly with your questions.
-          </p>
+          <h2 className="mb-3">{about.ctaTitle}</h2>
+          <p className="text-gray-500 mb-6">{about.ctaDescription}</p>
           <div className="d-flex flex-wrap justify-content-center gap-3">
-            <Link className="btn btn-dark" to="/services">
-              View Services
+            <Link className="btn btn-dark" to={about.ctaPrimaryTo}>
+              {about.ctaPrimaryLabel}
             </Link>
-            <Link className="btn btn-outline-dark" to="/contact">
-              Contact Us
+            <Link className="btn btn-outline-dark" to={about.ctaSecondaryTo}>
+              {about.ctaSecondaryLabel}
             </Link>
           </div>
         </div>
@@ -138,4 +136,3 @@ export default function AboutPage() {
     </>
   );
 }
-

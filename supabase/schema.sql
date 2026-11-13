@@ -45,3 +45,38 @@ CREATE POLICY "Allow public enquiry submissions"
 REVOKE ALL ON TABLE public.contact_messages FROM anon, authenticated;
 GRANT INSERT ON TABLE public.contact_messages TO anon, authenticated;
 
+-- ============================================================================
+-- Optional Dynamic Services Table (for managing services from Supabase)
+-- If this table is empty or not created, the frontend falls back to
+-- `src/config/servicesConfig.js`.
+-- ============================================================================
+CREATE TABLE IF NOT EXISTS public.services (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  slug TEXT UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  category TEXT NOT NULL DEFAULT '',
+  icon TEXT NOT NULL DEFAULT 'fe-briefcase',
+  image TEXT NOT NULL DEFAULT '',
+  image_alt TEXT NOT NULL DEFAULT '',
+  summary TEXT NOT NULL DEFAULT '',
+  details JSONB NOT NULL DEFAULT '[]'::jsonb,
+  enquiry_subject TEXT NOT NULL DEFAULT '',
+  sort_order INTEGER NOT NULL DEFAULT 0,
+  is_active BOOLEAN NOT NULL DEFAULT true,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+ALTER TABLE public.services ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Allow public read of active services" ON public.services;
+
+CREATE POLICY "Allow public read of active services"
+  ON public.services
+  FOR SELECT
+  TO anon, authenticated
+  USING (is_active = true);
+
+REVOKE ALL ON TABLE public.services FROM anon, authenticated;
+GRANT SELECT ON TABLE public.services TO anon, authenticated;
+
+

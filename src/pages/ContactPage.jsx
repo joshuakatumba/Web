@@ -43,7 +43,7 @@ export default function ContactPage() {
                   <div className="mb-6">
                     <h6 className="heading-xxs mb-3">
                       <i className="fe fe-phone text-primary me-2" aria-hidden="true" />
-                      Call Us
+                      {contact.phoneLabel}
                     </h6>
                     <p className="text-gray-500 mb-0">
                       <a
@@ -60,7 +60,7 @@ export default function ContactPage() {
                   <div className="mb-6">
                     <h6 className="heading-xxs mb-3">
                       <i className="fe fe-mail text-primary me-2" aria-hidden="true" />
-                      Email Us
+                      {contact.emailLabel}
                     </h6>
                     <p className="text-gray-500 mb-0">
                       <a
@@ -77,7 +77,7 @@ export default function ContactPage() {
                   <div className="mb-6">
                     <h6 className="heading-xxs mb-3">
                       <i className="fe fe-map-pin text-primary me-2" aria-hidden="true" />
-                      Visit Us
+                      {contact.addressLabel}
                     </h6>
                     <p className="text-gray-500 mb-0">{contact.address}</p>
                   </div>
@@ -87,7 +87,7 @@ export default function ContactPage() {
                   <div className="mb-6">
                     <h6 className="heading-xxs mb-3">
                       <i className="fe fe-clock text-primary me-2" aria-hidden="true" />
-                      Business Hours
+                      {contact.hoursLabel}
                     </h6>
                     <ul className="list-unstyled fs-sm text-gray-500 mb-0">
                       {contact.hours.map((entry) => (
@@ -102,7 +102,7 @@ export default function ContactPage() {
 
                 {Array.isArray(contact.socialLinks) && contact.socialLinks.length > 0 && (
                   <div>
-                    <h6 className="heading-xxs mb-3">Other Channels</h6>
+                    <h6 className="heading-xxs mb-3">{contact.channelsLabel}</h6>
                     <div className="d-flex gap-3">
                       {contact.socialLinks.map((social) => (
                         <a
@@ -125,7 +125,7 @@ export default function ContactPage() {
             {/* Enquiry Form */}
             <div className="col-12 col-lg-7">
               <div className="card border p-6 p-md-8">
-                <h2 className="h4 mb-2">Send an Enquiry</h2>
+                <h2 className="h4 mb-2">{contact.formTitle}</h2>
                 <p className="fs-sm text-gray-500 mb-6">
                   All fields marked with <span className="text-danger">*</span> are required.
                 </p>

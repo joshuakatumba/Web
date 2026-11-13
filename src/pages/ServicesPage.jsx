@@ -1,24 +1,27 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { servicesConfig } from '../config/servicesConfig';
+import { businessConfig } from '../config/businessConfig';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useServices } from '../hooks/useServices';
 
 export default function ServicesPage() {
   useDocumentTitle('Services');
 
+  const { servicesPage } = businessConfig;
+  const { services, isLoading } = useServices();
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const categories = useMemo(() => {
-    const unique = new Set(servicesConfig.map((s) => s.category).filter(Boolean));
+    const unique = new Set(services.map((s) => s.category).filter(Boolean));
     return ['All', ...Array.from(unique)];
-  }, []);
+  }, [services]);
 
   const filteredServices = useMemo(() => {
     if (selectedCategory === 'All') {
-      return servicesConfig;
+      return services;
     }
-    return servicesConfig.filter((s) => s.category === selectedCategory);
-  }, [selectedCategory]);
+    return services.filter((s) => s.category === selectedCategory);
+  }, [selectedCategory, services]);
 
   return (
     <>
@@ -37,10 +40,8 @@ export default function ServicesPage() {
               </li>
             </ol>
           </nav>
-          <h1 className="mb-3">Our Services</h1>
-          <p className="fs-lg text-gray-500 mb-0 col-lg-8 px-0">
-            Explore our range of offerings below. Select any service to send a tailored enquiry.
-          </p>
+          <h1 className="mb-3">{servicesPage.pageTitle}</h1>
+          <p className="fs-lg text-gray-500 mb-0 col-lg-8 px-0">{servicesPage.lead}</p>
         </div>
       </section>
 
@@ -66,13 +67,15 @@ export default function ServicesPage() {
             </div>
           )}
 
-          {filteredServices.length === 0 ? (
+          {isLoading && services.length === 0 ? (
+            <div className="text-center py-8">
+              <span className="spinner-border spinner-border-sm me-2" role="status" />
+              <span className="text-muted">Loading services...</span>
+            </div>
+          ) : filteredServices.length === 0 ? (
             <div className="card border p-8 text-center">
-              <h5 className="mb-2">No Services Found</h5>
-              <p className="text-muted mb-4">
-                No services match the selected filter. Please view all services or contact us for
-                custom requests.
-              </p>
+              <h5 className="mb-2">{servicesPage.emptyTitle}</h5>
+              <p className="text-muted mb-4">{servicesPage.emptyDescription}</p>
               <div>
                 <button
                   type="button"
@@ -132,7 +135,7 @@ export default function ServicesPage() {
                             service.enquirySubject || `Enquiry: ${service.name}`,
                           )}`}
                         >
-                          Enquire About This Service
+                          {servicesPage.enquireButtonLabel}
                           <i className="fe fe-arrow-right ms-2" aria-hidden="true" />
                         </Link>
                       </div>
@@ -148,13 +151,12 @@ export default function ServicesPage() {
       {/* Custom Request Banner */}
       <section className="py-10 bg-light border-top">
         <div className="container text-center">
-          <h2 className="mb-3">Need Something Specific?</h2>
+          <h2 className="mb-3">{servicesPage.customBannerTitle}</h2>
           <p className="text-gray-500 mb-6 col-lg-7 mx-auto">
-            If your requirements fall outside our standard service list, reach out and let us know
-            what you are looking for.
+            {servicesPage.customBannerDescription}
           </p>
           <Link className="btn btn-primary btn-lg" to="/contact">
-            Send a Custom Enquiry
+            {servicesPage.customBannerCtaLabel}
             <i className="fe fe-mail ms-2" aria-hidden="true" />
           </Link>
         </div>
@@ -162,4 +164,3 @@ export default function ServicesPage() {
     </>
   );
 }
-
