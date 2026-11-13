@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { businessConfig } from '../config/businessConfig';
+import BrandLogo from './BrandLogo';
 
 export default function Layout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,27 +15,26 @@ export default function Layout({ children }) {
 
   return (
     <div className="d-flex flex-column min-vh-100">
-      {/* Top Announcement Bar */}
-      <div className="navbar navbar-topbar navbar-expand-xl navbar-light bg-light">
+      {/* High Contrast Top Bar */}
+      <div className="navbar navbar-topbar navbar-expand-xl navbar-dark bg-dark">
         <div className="container">
-          <div className="d-flex flex-wrap justify-content-between align-items-center w-100 py-1 fs-xxs text-gray-500">
+          <div className="d-flex flex-wrap justify-content-between align-items-center w-100 py-1 fs-xxs text-gray-300">
             <div className="d-flex align-items-center">
-              <i className="fe fe-info text-primary me-2" aria-hidden="true" />
-              <span className="text-uppercase fw-medium">{brand.announcementText}</span>
+              <span className="text-uppercase fw-medium text-white">{brand.announcementText}</span>
             </div>
             <div className="d-none d-md-flex align-items-center gap-4">
               {contact.email && (
-                <a className="text-reset text-decoration-none" href={`mailto:${contact.email}`}>
-                  <i className="fe fe-mail me-1" aria-hidden="true" />
+                <a className="text-gray-300 text-decoration-none" href={`mailto:${contact.email}`}>
+                  <i className="fe fe-mail me-1 text-primary" aria-hidden="true" />
                   {contact.email}
                 </a>
               )}
               {contact.phone && (
                 <a
-                  className="text-reset text-decoration-none"
+                  className="text-gray-300 text-decoration-none"
                   href={`tel:${contact.phone.replace(/[^+\d]/g, '')}`}
                 >
-                  <i className="fe fe-phone me-1" aria-hidden="true" />
+                  <i className="fe fe-phone me-1 text-primary" aria-hidden="true" />
                   {contact.phone}
                 </a>
               )}
@@ -46,8 +46,8 @@ export default function Layout({ children }) {
       {/* Main Navigation */}
       <header className="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
         <div className="container">
-          <Link className="navbar-brand fw-semibold" to="/">
-            {brand.logoText || brand.name}
+          <Link className="navbar-brand text-decoration-none" to="/" aria-label={brand.name}>
+            <BrandLogo />
           </Link>
 
           <button
@@ -93,23 +93,22 @@ export default function Layout({ children }) {
       {/* Main Content */}
       <main className="flex-grow-1">{children}</main>
 
-      {/* Footer */}
-      <footer
-        className="bg-dark bg-cover text-white mt-auto"
-        style={{ backgroundImage: 'url(/images/patterns/pattern-2.svg)' }}
-      >
+      {/* High Contrast Flat Footer */}
+      <footer className="bg-dark text-white mt-auto">
         <div className="py-10 border-bottom border-gray-700">
           <div className="container">
             <div className="row gy-5">
               <div className="col-12 col-md-4">
-                <h4 className="mb-4 text-white">{brand.logoText || brand.name}</h4>
-                <p className="text-gray-350 fs-sm mb-4">{brand.shortTagline}</p>
+                <div className="mb-4">
+                  <BrandLogo inverted />
+                </div>
+                <p className="text-gray-300 fs-sm mb-4">{brand.shortTagline}</p>
                 {Array.isArray(contact.socialLinks) && contact.socialLinks.length > 0 && (
                   <ul className="list-inline mb-0">
                     {contact.socialLinks.map((social) => (
                       <li className="list-inline-item me-3" key={social.name}>
                         <a
-                          className="text-gray-350 text-decoration-none"
+                          className="text-gray-300 text-decoration-none"
                           href={social.href}
                           target="_blank"
                           rel="noreferrer"
@@ -128,7 +127,7 @@ export default function Layout({ children }) {
                 <ul className="list-unstyled mb-0">
                   {navigation.map((item) => (
                     <li className="mb-2" key={item.to}>
-                      <Link className="text-gray-350 text-decoration-none fs-sm" to={item.to}>
+                      <Link className="text-gray-300 text-decoration-none fs-sm" to={item.to}>
                         {item.label}
                       </Link>
                     </li>
@@ -138,11 +137,11 @@ export default function Layout({ children }) {
 
               <div className="col-12 col-md-4">
                 <h6 className="heading-xxs mb-4 text-white">{footer.contactTitle}</h6>
-                <ul className="list-unstyled mb-0 fs-sm text-gray-350">
+                <ul className="list-unstyled mb-0 fs-sm text-gray-300">
                   {contact.email && (
                     <li className="mb-2">
                       <a
-                        className="text-gray-350 text-decoration-none"
+                        className="text-gray-300 text-decoration-none"
                         href={`mailto:${contact.email}`}
                       >
                         <i className="fe fe-mail me-2 text-primary" aria-hidden="true" />
@@ -153,7 +152,7 @@ export default function Layout({ children }) {
                   {contact.phone && (
                     <li className="mb-2">
                       <a
-                        className="text-gray-350 text-decoration-none"
+                        className="text-gray-300 text-decoration-none"
                         href={`tel:${contact.phone.replace(/[^+\d]/g, '')}`}
                       >
                         <i className="fe fe-phone me-2 text-primary" aria-hidden="true" />
@@ -177,7 +176,7 @@ export default function Layout({ children }) {
           <div className="container">
             <div className="row align-items-center">
               <div className="col-12 text-center text-md-start">
-                <p className="mb-0 fs-xxs text-gray-350">
+                <p className="mb-0 fs-xxs text-gray-400">
                   &copy; {new Date().getFullYear()} {brand.name}. All rights reserved.
                 </p>
               </div>
@@ -188,4 +187,3 @@ export default function Layout({ children }) {
     </div>
   );
 }
-

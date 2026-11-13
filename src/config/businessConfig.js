@@ -1,19 +1,17 @@
 /**
- * Configurable Business Details & Site Copy
+ * Crestline Home & Interior Services Configuration
  * ---------------------------------------------------------------------------
- * Update this file to customize the business identity, navigation, headings,
- * imagery, and contact details without modifying page components.
- *
- * Set optional contact fields to `null` or `""` to hide them gracefully.
+ * Update business identity, navigation, headings, imagery, and contact details
+ * here without modifying page components.
  */
 
 export const businessConfig = {
   brand: {
-    name: 'Your Business Name',
-    shortTagline: 'Quality services and dependable client support.',
-    announcementText: 'Accepting new client enquiries',
-    logoText: 'Your Business.',
-    primaryCtaLabel: 'Contact Us',
+    name: 'Crestline',
+    shortTagline: 'Home and interior services crafted for calm, functional living.',
+    announcementText: 'Crestline Home & Interior Services',
+    logoText: 'Crestline',
+    primaryCtaLabel: 'Book Consultation',
     primaryCtaTo: '/contact',
   },
 
@@ -25,52 +23,53 @@ export const businessConfig = {
   ],
 
   footer: {
-    navigationTitle: 'Navigation',
-    contactTitle: 'Contact',
+    navigationTitle: 'Explore',
+    contactTitle: 'Studio Contact',
   },
 
   hero: {
-    headline: 'Reliable Services for Your Business',
-    description: 'Thoughtful work and clear communication from start to finish.',
+    headline: 'Spaces Shaped Around How You Live',
+    description:
+      'Thoughtful home design, renovations, and custom joinery built for everyday comfort.',
     primaryCtaLabel: 'View Services',
     primaryCtaTo: '/services',
-    secondaryCtaLabel: 'Contact Us',
+    secondaryCtaLabel: 'Get in Touch',
     secondaryCtaTo: '/contact',
-    heroImage: '/images/covers/cover-1.jpg',
-    heroImageAlt: 'Featured business showcase',
+    heroImage: '/images/crestline/hero-living.jpg',
+    heroImageAlt: 'Sunlit living room designed by Crestline',
   },
 
   homeVisualTiles: [
     {
-      title: 'About Us',
+      title: 'About Crestline',
       to: '/about',
-      image: '/images/covers/cover-2.jpg',
-      imageAlt: 'About our business',
+      image: '/images/crestline/tile-about.jpg',
+      imageAlt: 'Natural stone, oak, and linen material samples',
     },
     {
       title: 'Our Services',
       to: '/services',
-      image: '/images/covers/cover-3.jpg',
-      imageAlt: 'Explore our services',
+      image: '/images/crestline/tile-services.jpg',
+      imageAlt: 'Calm dining space with solid timber table',
     },
     {
-      title: 'Get in Touch',
+      title: 'Start a Project',
       to: '/contact',
-      image: '/images/covers/cover-4.jpg',
-      imageAlt: 'Contact our team',
+      image: '/images/crestline/tile-contact.jpg',
+      imageAlt: 'Crestline studio desk with architectural plans',
     },
   ],
 
   homeIntro: {
-    title: 'Who We Are',
+    title: 'Crafted Interiors Without the Noise',
     description:
-      'Every project starts by listening carefully to what you need. Update this introduction in src/config/businessConfig.js with your own business overview.',
-    ctaLabel: 'Learn More',
+      'At Crestline, every room starts with natural light, honest materials, and careful planning. We guide homeowners from early concepts through final installation.',
+    ctaLabel: 'About Crestline',
     ctaTo: '/about',
-    image: '/images/covers/cover-25.jpg',
-    imageAlt: 'Our workspace',
-    secondaryImage: '/images/covers/cover-26.jpg',
-    secondaryImageAlt: 'Our approach',
+    image: '/images/crestline/tile-about.jpg',
+    imageAlt: 'Material selection at Crestline',
+    secondaryImage: '/images/crestline/service-styling.jpg',
+    secondaryImageAlt: 'Warm bedroom styling by Crestline',
   },
 
   homeServices: {
@@ -81,83 +80,85 @@ export const businessConfig = {
   },
 
   homeContactCta: {
-    title: 'Ready to Start?',
-    description: 'Send us a message and our team will respond promptly.',
-    ctaLabel: 'Contact Us',
+    title: 'Planning a Home Project?',
+    description: 'Share your space and timeline with our studio.',
+    ctaLabel: 'Contact Crestline',
     ctaTo: '/contact',
   },
 
   reasonsToChoose: [
     {
+      id: 'materials',
+      icon: 'fe-layers',
+      title: 'Honest Materials',
+      description: 'Timber, stone, and natural textiles chosen to age well.',
+    },
+    {
       id: 'clarity',
       icon: 'fe-compass',
-      title: 'Clear Communication',
-      description: 'Direct updates at every stage.',
+      title: 'Clear Planning',
+      description: 'Structured schedules and transparent updates at every step.',
     },
     {
-      id: 'quality',
+      id: 'craft',
       icon: 'fe-check-circle',
-      title: 'Dependable Delivery',
-      description: 'Consistent standards on every project.',
+      title: 'Careful Execution',
+      description: 'Experienced tradespeople focused on clean, lasting finishes.',
     },
     {
-      id: 'tailored',
-      icon: 'fe-sliders',
-      title: 'Tailored Approach',
-      description: 'Solutions shaped around your goals.',
-    },
-    {
-      id: 'support',
-      icon: 'fe-message-square',
-      title: 'Dedicated Support',
-      description: 'Responsive help whenever you need it.',
+      id: 'care',
+      icon: 'fe-home',
+      title: 'Lived In Comfort',
+      description: 'Rooms designed for real daily routines, not just photos.',
     },
   ],
 
   about: {
-    pageTitle: 'About Us',
-    headerImage: '/images/covers/cover-4.jpg',
-    backgroundTitle: 'Our Business',
+    pageTitle: 'About Crestline',
+    headerImage: '/images/crestline/tile-services.jpg',
+    backgroundTitle: 'Built for Everyday Living',
     backgroundParagraphs: [
-      'Configure your business background here in src/config/businessConfig.js. Share who you serve and what guides your work.',
+      'Crestline is a home and interior services studio focused on practical layouts, warm natural finishes, and calm, well ordered spaces.',
+      'We work closely with homeowners on single room updates, kitchen and bath renovations, and custom woodwork tailored to each property.',
     ],
-    backgroundImage: '/images/covers/cover-3.jpg',
-    backgroundImageAlt: 'About our business',
+    backgroundImage: '/images/crestline/tile-about.jpg',
+    backgroundImageAlt: 'Craftsman selecting stone and timber samples',
     missionTitle: 'Our Mission',
     mission:
-      'To provide dependable, thoughtfully crafted services with integrity and clarity.',
-    missionImage: '/images/products/product-13.jpg',
-    missionImageAlt: 'Our mission',
+      'To create welcoming, durable interiors through thoughtful design and dependable craftsmanship.',
+    missionImage: '/images/crestline/service-design.jpg',
+    missionImageAlt: 'Sunlit living room interior',
     visionTitle: 'Our Vision',
     vision:
-      'To be a trusted partner known for consistent quality and honest communication.',
-    visionImage: '/images/products/product-14.jpg',
-    visionImageAlt: 'Our vision',
+      'Homes that feel grounded, effortless to live in, and thoughtfully finished in every detail.',
+    visionImage: '/images/crestline/service-carpentry.jpg',
+    visionImageAlt: 'Custom white oak joinery',
     valuesTitle: 'Core Values',
     coreValues: [
       {
         title: 'Integrity',
-        description: 'Honest advice and transparent expectations.',
+        description: 'Clear scopes, realistic timelines, and honest guidance.',
       },
       {
         title: 'Craftsmanship',
-        description: 'Careful attention to every detail.',
+        description: 'Clean joinery, crisp lines, and lasting materials.',
       },
       {
-        title: 'Responsiveness',
-        description: 'Timely answers when you reach out.',
+        title: 'Simplicity',
+        description: 'Uncluttered spaces that let light and texture breathe.',
       },
       {
-        title: 'Respect',
-        description: 'Valuing your time and unique needs.',
+        title: 'Stewardship',
+        description: 'Respect for your home, budget, and daily routine.',
       },
     ],
     businessDetails: [
-      { label: 'Service Area', value: 'Local & Remote' },
-      { label: 'Response Time', value: '1 to 2 business days' },
+      { label: 'Focus', value: 'Residential Interiors & Renovations' },
+      { label: 'Consultations', value: 'In Studio & On Site' },
+      { label: 'Response Time', value: 'Within 1 to 2 business days' },
     ],
-    ctaTitle: 'Interested in Working Together?',
-    ctaPrimaryLabel: 'View Services',
+    ctaTitle: 'Ready to Discuss Your Space?',
+    ctaPrimaryLabel: 'Explore Services',
     ctaPrimaryTo: '/services',
     ctaSecondaryLabel: 'Contact Us',
     ctaSecondaryTo: '/contact',
@@ -169,36 +170,32 @@ export const businessConfig = {
     emptyTitle: 'No Services Found',
     emptyDescription: 'No services match the selected category.',
     galleryImages: [
-      { src: '/images/products/product-15.jpg', alt: 'Service showcase 1' },
-      { src: '/images/products/product-16.jpg', alt: 'Service showcase 2' },
-      { src: '/images/products/product-17.jpg', alt: 'Service showcase 3' },
-      { src: '/images/products/product-18.jpg', alt: 'Service showcase 4' },
+      { src: '/images/crestline/service-design.jpg', alt: 'Living room space planning' },
+      { src: '/images/crestline/service-renovation.jpg', alt: 'Modern kitchen renovation' },
+      { src: '/images/crestline/service-carpentry.jpg', alt: 'Custom oak cabinetry' },
+      { src: '/images/crestline/service-styling.jpg', alt: 'Bedroom linen and lighting styling' },
     ],
-    customBannerTitle: 'Need Something Specific?',
-    customBannerCtaLabel: 'Send an Enquiry',
+    customBannerTitle: 'Have a Custom Home Project in Mind?',
+    customBannerCtaLabel: 'Book a Consultation',
   },
 
   contact: {
-    pageTitle: 'Contact',
+    pageTitle: 'Contact Crestline',
     formTitle: 'Send a Message',
-    sideImage: '/images/covers/cover-26.jpg',
-    sideImageAlt: 'Contact our team',
+    sideImage: '/images/crestline/tile-contact.jpg',
+    sideImageAlt: 'Crestline design studio desk with floor plans',
     phoneLabel: 'Phone',
     emailLabel: 'Email',
-    addressLabel: 'Address',
+    addressLabel: 'Studio',
     hoursLabel: 'Hours',
     channelsLabel: 'Channels',
-    email: 'contact@yourbusiness.example',
-    phone: '+1 (000) 000 0000',
-    address: '123 Business Street, Suite 100, Your City',
+    email: 'hello@crestlineinteriors.example',
+    phone: '+1 (555) 234 5678',
+    address: '420 Oakwood Avenue, Suite 2B',
     hours: [
-      { days: 'Monday to Friday', time: '9:00 AM to 5:00 PM' },
-      { days: 'Saturday and Sunday', time: 'By Appointment' },
+      { days: 'Monday to Friday', time: '9:00 AM to 5:30 PM' },
+      { days: 'Saturday', time: '10:00 AM to 2:00 PM' },
     ],
-    socialLinks: [
-      // Add your real URLs here when available, or leave empty to hide
-      // { name: 'LinkedIn', href: 'https://linkedin.com/company/your-business', icon: 'fe-linkedin' },
-      // { name: 'Instagram', href: 'https://instagram.com/your-business', icon: 'fe-instagram' },
-    ],
+    socialLinks: [],
   },
 };

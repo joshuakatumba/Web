@@ -91,13 +91,12 @@ export async function submitContactEnquiry(values) {
   const { error: dbError } = await supabase.from('contact_messages').insert([payload]);
 
   if (dbError) {
+    console.error('Contact enquiry submission error:', dbError.message);
     return {
       ok: false,
       savedToDatabase: false,
       error:
-        dbError.code === '42P01' || dbError.code === 'PGRST205'
-          ? 'The contact_messages table has not been created in Supabase yet. Please run supabase/schema.sql.'
-          : 'Unable to save your enquiry right now. Please try again or reach us directly via email.',
+        'We could not submit your enquiry right now. Please try again shortly or reach us directly by email.',
       technicalDetails: dbError.message,
     };
   }

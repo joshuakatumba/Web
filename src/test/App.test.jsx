@@ -25,7 +25,7 @@ function renderWithRouter(initialEntries = ['/']) {
   );
 }
 
-describe('Small Business Website', () => {
+describe('Crestline Home & Interior Services Website', () => {
   beforeEach(() => {
     vi.restoreAllMocks();
     sessionStorage.clear();
@@ -34,9 +34,9 @@ describe('Small Business Website', () => {
   it('renders Home page with hero, reasons, intro, services, and CTA', () => {
     renderWithRouter(['/']);
     expect(
-      screen.getByRole('heading', { name: /Reliable Services for Your Business/i }),
+      screen.getByRole('heading', { name: /Spaces Shaped Around How You Live/i }),
     ).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Clear Communication' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Honest Materials' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Our Services' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /View Services/i })).toHaveAttribute(
       'href',
@@ -52,7 +52,7 @@ describe('Small Business Website', () => {
     expect(toggleBtn).toHaveAttribute('aria-expanded', 'true');
 
     fireEvent.click(screen.getAllByRole('link', { name: 'About' })[0]);
-    expect(screen.getByRole('heading', { name: /About Us/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /About Crestline/i })).toBeInTheDocument();
     expect(screen.getByText(/Our Mission/i)).toBeInTheDocument();
     expect(screen.getByText(/Our Vision/i)).toBeInTheDocument();
   });
@@ -61,18 +61,18 @@ describe('Small Business Website', () => {
     renderWithRouter(['/services']);
     expect(screen.getByRole('heading', { name: /^Services$/i })).toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole('button', { name: 'Advisory' }));
-    expect(screen.getByText('Consultation & Planning')).toBeInTheDocument();
-    expect(screen.queryByText('Core Service Delivery')).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'Design' }));
+    expect(screen.getByText('Interior Design & Planning')).toBeInTheDocument();
+    expect(screen.queryByText('Kitchen & Home Renovations')).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole('button', { name: 'All' }));
-    expect(screen.getByText('Core Service Delivery')).toBeInTheDocument();
+    expect(screen.getByText('Kitchen & Home Renovations')).toBeInTheDocument();
 
     const enquireLinks = screen.getAllByRole('link', { name: /^Enquire$/i });
     fireEvent.click(enquireLinks[0]);
 
     expect(screen.getByRole('heading', { name: /Send a Message/i })).toBeInTheDocument();
-    expect(screen.getByLabelText(/Subject/i)).toHaveValue('Enquiry: Consultation & Planning');
+    expect(screen.getByLabelText(/Subject/i)).toHaveValue('Enquiry: Interior Design & Planning');
   });
 
   it('validates contact form fields and email format', async () => {
