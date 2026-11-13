@@ -28,18 +28,6 @@ export default function ServicesPage() {
       {/* Page Header */}
       <section className="py-8 bg-light border-bottom">
         <div className="container">
-          <nav aria-label="breadcrumb" className="mb-3">
-            <ol className="breadcrumb mb-0 fs-xs">
-              <li className="breadcrumb-item">
-                <Link className="text-gray-500 text-decoration-none" to="/">
-                  Home
-                </Link>
-              </li>
-              <li className="breadcrumb-item active text-dark" aria-current="page">
-                Services
-              </li>
-            </ol>
-          </nav>
           <h1 className="mb-0">{servicesPage.pageTitle}</h1>
         </div>
       </section>

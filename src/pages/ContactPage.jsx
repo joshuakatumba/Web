@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import ContactForm from '../components/ContactForm';
 import { businessConfig } from '../config/businessConfig';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
@@ -15,18 +15,6 @@ export default function ContactPage() {
       {/* Page Header */}
       <section className="py-8 bg-light border-bottom">
         <div className="container">
-          <nav aria-label="breadcrumb" className="mb-3">
-            <ol className="breadcrumb mb-0 fs-xs">
-              <li className="breadcrumb-item">
-                <Link className="text-gray-500 text-decoration-none" to="/">
-                  Home
-                </Link>
-              </li>
-              <li className="breadcrumb-item active text-dark" aria-current="page">
-                Contact
-              </li>
-            </ol>
-          </nav>
           <h1 className="mb-0">{contact.pageTitle}</h1>
         </div>
       </section>

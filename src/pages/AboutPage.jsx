@@ -15,18 +15,6 @@ export default function AboutPage() {
         style={{ backgroundImage: `url(${about.headerImage || about.backgroundImage})` }}
       >
         <div className="container py-4">
-          <nav aria-label="breadcrumb" className="mb-3">
-            <ol className="breadcrumb mb-0 fs-xs">
-              <li className="breadcrumb-item">
-                <Link className="text-white opacity-75 text-decoration-none" to="/">
-                  Home
-                </Link>
-              </li>
-              <li className="breadcrumb-item active text-white" aria-current="page">
-                About
-              </li>
-            </ol>
-          </nav>
           <h1 className="text-white mb-0">{about.pageTitle}</h1>
         </div>
       </section>
