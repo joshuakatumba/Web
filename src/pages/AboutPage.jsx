@@ -15,7 +15,7 @@ export default function AboutPage() {
         style={{ backgroundImage: `url(${about.headerImage || about.backgroundImage})` }}
       >
         <div className="container py-4">
-          <h1 className="text-white mb-0">{about.pageTitle}</h1>
+          <h1 className="text-white mb-0 text-start">{about.pageTitle}</h1>
         </div>
       </section>
 

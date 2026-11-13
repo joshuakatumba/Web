@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { businessConfig } from '../config/businessConfig';
 import BrandLogo from './BrandLogo';
+import PhosphorIcon from './PhosphorIcon';
 
 export default function Layout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,18 +25,21 @@ export default function Layout({ children }) {
             </div>
             <div className="d-none d-md-flex align-items-center gap-4">
               {contact.email && (
-                <a className="text-gray-300 text-decoration-none" href={`mailto:${contact.email}`}>
-                  <i className="fe fe-mail me-1 text-primary" aria-hidden="true" />
-                  {contact.email}
+                <a
+                  className="text-gray-300 text-decoration-none d-inline-flex align-items-center gap-1"
+                  href={`mailto:${contact.email}`}
+                >
+                  <PhosphorIcon name="mail" size={14} className="text-white" />
+                  <span>{contact.email}</span>
                 </a>
               )}
               {contact.phone && (
                 <a
-                  className="text-gray-300 text-decoration-none"
+                  className="text-gray-300 text-decoration-none d-inline-flex align-items-center gap-1"
                   href={`tel:${contact.phone.replace(/[^+\d]/g, '')}`}
                 >
-                  <i className="fe fe-phone me-1 text-primary" aria-hidden="true" />
-                  {contact.phone}
+                  <PhosphorIcon name="phone" size={14} className="text-white" />
+                  <span>{contact.phone}</span>
                 </a>
               )}
             </div>
@@ -81,9 +85,12 @@ export default function Layout({ children }) {
             </ul>
 
             <div className="d-flex align-items-center mt-3 mt-lg-0">
-              <Link className="btn btn-sm btn-dark w-100 w-lg-auto" to={brand.primaryCtaTo}>
-                {brand.primaryCtaLabel}
-                <i className="fe fe-arrow-right ms-2" aria-hidden="true" />
+              <Link
+                className="btn btn-sm btn-dark w-100 w-lg-auto d-inline-flex align-items-center justify-content-center gap-2"
+                to={brand.primaryCtaTo}
+              >
+                <span>{brand.primaryCtaLabel}</span>
+                <PhosphorIcon name="arrow-right" size={15} weight="regular" />
               </Link>
             </div>
           </nav>
@@ -102,24 +109,7 @@ export default function Layout({ children }) {
                 <div className="mb-4">
                   <BrandLogo inverted />
                 </div>
-                <p className="text-gray-300 fs-sm mb-4">{brand.shortTagline}</p>
-                {Array.isArray(contact.socialLinks) && contact.socialLinks.length > 0 && (
-                  <ul className="list-inline mb-0">
-                    {contact.socialLinks.map((social) => (
-                      <li className="list-inline-item me-3" key={social.name}>
-                        <a
-                          className="text-gray-300 text-decoration-none"
-                          href={social.href}
-                          target="_blank"
-                          rel="noreferrer"
-                          aria-label={social.name}
-                        >
-                          <i className={`fe ${social.icon}`} aria-hidden="true" />
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                <p className="text-gray-300 fs-sm mb-0">{brand.shortTagline}</p>
               </div>
 
               <div className="col-6 col-md-3 offset-md-1">
@@ -141,29 +131,29 @@ export default function Layout({ children }) {
                   {contact.email && (
                     <li className="mb-2">
                       <a
-                        className="text-gray-300 text-decoration-none"
+                        className="text-gray-300 text-decoration-none d-inline-flex align-items-center gap-2"
                         href={`mailto:${contact.email}`}
                       >
-                        <i className="fe fe-mail me-2 text-primary" aria-hidden="true" />
-                        {contact.email}
+                        <PhosphorIcon name="mail" size={15} className="text-white" />
+                        <span>{contact.email}</span>
                       </a>
                     </li>
                   )}
                   {contact.phone && (
                     <li className="mb-2">
                       <a
-                        className="text-gray-300 text-decoration-none"
+                        className="text-gray-300 text-decoration-none d-inline-flex align-items-center gap-2"
                         href={`tel:${contact.phone.replace(/[^+\d]/g, '')}`}
                       >
-                        <i className="fe fe-phone me-2 text-primary" aria-hidden="true" />
-                        {contact.phone}
+                        <PhosphorIcon name="phone" size={15} className="text-white" />
+                        <span>{contact.phone}</span>
                       </a>
                     </li>
                   )}
                   {contact.address && (
-                    <li className="mb-0">
-                      <i className="fe fe-map-pin me-2 text-primary" aria-hidden="true" />
-                      {contact.address}
+                    <li className="mb-0 d-inline-flex align-items-center gap-2">
+                      <PhosphorIcon name="map-pin" size={15} className="text-white" />
+                      <span>{contact.address}</span>
                     </li>
                   )}
                 </ul>

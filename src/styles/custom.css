@@ -1,4 +1,4 @@
-/* High contrast flat design overrides complementing Shopper theme.bundle.css */
+/* High contrast architectural styling complementing theme.bundle.css */
 
 .hero-overlay {
   position: relative;
@@ -16,13 +16,6 @@
 .hero-overlay > .container {
   position: relative;
   z-index: 1;
-}
-
-/* Fix centered breadcrumb default from theme.bundle.css */
-.breadcrumb {
-  justify-content: flex-start !important;
-  text-align: left;
-  padding-left: 0;
 }
 
 .visual-tile {
@@ -43,7 +36,7 @@
   transform: scale(1.03);
 }
 
-/* Flat solid scrim, no gradients */
+/* Flat solid scrim, zero gradients */
 .visual-tile-overlay {
   position: absolute;
   inset: 0;
@@ -55,7 +48,35 @@
 }
 
 .visual-tile:hover .visual-tile-overlay {
-  background: rgba(17, 17, 17, 0.56);
+  background: rgba(17, 17, 17, 0.58);
+}
+
+/* Aceternity UI monochrome card primitives */
+.aceternity-focus-card,
+.aceternity-bento-card {
+  border: 1px solid #e2e2e2;
+  transition:
+    border-color 0.25s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.aceternity-focus-card:hover,
+.aceternity-bento-card:hover {
+  border-color: #111111;
+}
+
+.aceternity-focus-card.is-dimmed {
+  opacity: 0.62;
+}
+
+.aceternity-card-img {
+  transition: transform 0.4s ease;
+}
+
+.aceternity-focus-card:hover .aceternity-card-img,
+.aceternity-bento-card:hover .aceternity-card-img {
+  transform: scale(1.03);
 }
 
 .service-card-img {
@@ -99,8 +120,10 @@
 }
 
 .nav-link.active {
-  color: var(--bs-primary) !important;
+  color: #111111 !important;
   font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 6px;
 }
 
 .form-control {

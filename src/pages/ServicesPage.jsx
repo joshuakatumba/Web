@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import PhosphorIcon from '../components/PhosphorIcon';
+import { BentoCard, BentoGrid } from '../components/aceternity/BentoGrid';
 import { businessConfig } from '../config/businessConfig';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useServices } from '../hooks/useServices';
@@ -28,11 +30,11 @@ export default function ServicesPage() {
       {/* Page Header */}
       <section className="py-8 bg-light border-bottom">
         <div className="container">
-          <h1 className="mb-0">{servicesPage.pageTitle}</h1>
+          <h1 className="mb-0 text-start">{servicesPage.pageTitle}</h1>
         </div>
       </section>
 
-      {/* Services List */}
+      {/* Services Bento Grid */}
       <section className="py-10">
         <div className="container">
           {categories.length > 1 && (
@@ -77,49 +79,34 @@ export default function ServicesPage() {
               </div>
             </div>
           ) : (
-            <div className="row gy-7">
+            <BentoGrid>
               {filteredServices.map((service) => (
-                <div className="col-12 col-md-6" key={service.id}>
-                  <div className="card border-0 h-100">
-                    {service.image && (
-                      <Link
-                        to={`/contact?subject=${encodeURIComponent(
-                          service.enquirySubject || `Enquiry: ${service.name}`,
-                        )}`}
-                      >
-                        <img
-                          src={service.image}
-                          alt={service.imageAlt || service.name}
-                          className="card-img-top service-card-img"
-                        />
-                      </Link>
-                    )}
-                    <div className="card-body px-0 pt-4 pb-0 d-flex flex-column">
-                      <div className="d-flex align-items-center justify-content-between mb-2">
-                        <h3 className="h4 mb-0">{service.name}</h3>
-                        {service.category && (
-                          <span className="heading-xxs text-primary">{service.category}</span>
-                        )}
-                      </div>
-
-                      <p className="text-gray-500 mb-3 flex-grow-1">{service.summary}</p>
-
-                      <div>
-                        <Link
-                          className="btn btn-underline"
-                          to={`/contact?subject=${encodeURIComponent(
-                            service.enquirySubject || `Enquiry: ${service.name}`,
-                          )}`}
-                        >
-                          {servicesPage.enquireButtonLabel}
-                          <i className="fe fe-arrow-right ms-2" aria-hidden="true" />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <BentoCard
+                  key={service.id}
+                  title={service.name}
+                  category={service.category}
+                  description={service.summary}
+                  image={service.image}
+                  imageAlt={service.imageAlt || service.name}
+                  icon={
+                    service.icon ? (
+                      <PhosphorIcon name={service.icon} size={18} className="text-dark" />
+                    ) : null
+                  }
+                  footer={
+                    <Link
+                      className="btn btn-underline d-inline-flex align-items-center gap-2"
+                      to={`/contact?subject=${encodeURIComponent(
+                        service.enquirySubject || `Enquiry: ${service.name}`,
+                      )}`}
+                    >
+                      <span>{servicesPage.enquireButtonLabel}</span>
+                      <PhosphorIcon name="arrow-right" size={15} weight="regular" />
+                    </Link>
+                  }
+                />
               ))}
-            </div>
+            </BentoGrid>
           )}
         </div>
       </section>
@@ -143,9 +130,12 @@ export default function ServicesPage() {
       <section className="py-10 border-top">
         <div className="container text-center">
           <h2 className="mb-5">{servicesPage.customBannerTitle}</h2>
-          <Link className="btn btn-dark btn-lg" to="/contact">
-            {servicesPage.customBannerCtaLabel}
-            <i className="fe fe-arrow-right ms-2" aria-hidden="true" />
+          <Link
+            className="btn btn-dark btn-lg d-inline-flex align-items-center gap-2"
+            to="/contact"
+          >
+            <span>{servicesPage.customBannerCtaLabel}</span>
+            <PhosphorIcon name="arrow-right" size={18} weight="regular" />
           </Link>
         </div>
       </section>

@@ -52,7 +52,7 @@ describe('Crestline Home & Interior Services Website', () => {
     expect(toggleBtn).toHaveAttribute('aria-expanded', 'true');
 
     fireEvent.click(screen.getAllByRole('link', { name: 'About' })[0]);
-    expect(screen.getByRole('heading', { name: /About Crestline/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /^About$/i })).toBeInTheDocument();
     expect(screen.getByText(/Our Mission/i)).toBeInTheDocument();
     expect(screen.getByText(/Our Vision/i)).toBeInTheDocument();
   });

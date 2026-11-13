@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import PhosphorIcon from '../components/PhosphorIcon';
+import { FocusCards } from '../components/aceternity/FocusCards';
 import { businessConfig } from '../config/businessConfig';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useServices } from '../hooks/useServices';
@@ -32,9 +34,12 @@ export default function HomePage() {
               <h1 className="display-4 fw-bold text-white mb-4">{hero.headline}</h1>
               <p className="fs-lg text-white opacity-90 mb-6">{hero.description}</p>
               <div className="d-flex flex-wrap gap-3">
-                <Link className="btn btn-white btn-lg" to={hero.primaryCtaTo}>
-                  {hero.primaryCtaLabel}
-                  <i className="fe fe-arrow-right ms-2" aria-hidden="true" />
+                <Link
+                  className="btn btn-white btn-lg d-inline-flex align-items-center gap-2"
+                  to={hero.primaryCtaTo}
+                >
+                  <span>{hero.primaryCtaLabel}</span>
+                  <PhosphorIcon name="arrow-right" size={18} weight="regular" />
                 </Link>
                 <Link className="btn btn-outline-white btn-lg" to={hero.secondaryCtaTo}>
                   {hero.secondaryCtaLabel}
@@ -55,9 +60,9 @@ export default function HomePage() {
                   <Link className="visual-tile text-decoration-none" to={tile.to}>
                     <img src={tile.image} alt={tile.imageAlt} className="visual-tile-img" />
                     <div className="visual-tile-overlay">
-                      <span className="h4 text-white mb-0 d-flex align-items-center">
-                        {tile.title}
-                        <i className="fe fe-arrow-right ms-2 fs-base" aria-hidden="true" />
+                      <span className="h4 text-white mb-0 d-inline-flex align-items-center gap-2">
+                        <span>{tile.title}</span>
+                        <PhosphorIcon name="arrow-right" size={18} weight="regular" />
                       </span>
                     </div>
                   </Link>
@@ -75,10 +80,12 @@ export default function HomePage() {
             <div className="row gy-5">
               {reasonsToChoose.map((reason) => (
                 <div className="col-12 col-sm-6 col-lg-3" key={reason.id}>
-                  <div className="d-flex align-items-start">
-                    <i
-                      className={`fe ${reason.icon} fs-lg text-primary me-4 mt-1`}
-                      aria-hidden="true"
+                  <div className="d-flex align-items-start gap-3">
+                    <PhosphorIcon
+                      name={reason.icon}
+                      size={22}
+                      weight="light"
+                      className="text-dark flex-shrink-0 mt-1"
                     />
                     <div>
                       <h6 className="heading-xxs mb-1">{reason.title}</h6>
@@ -119,65 +126,34 @@ export default function HomePage() {
             <div className="col-12 col-lg-5 offset-lg-1">
               <h2 className="mb-4">{homeIntro.title}</h2>
               <p className="text-gray-500 mb-6">{homeIntro.description}</p>
-              <Link className="btn btn-underline" to={homeIntro.ctaTo}>
-                {homeIntro.ctaLabel}
-                <i className="fe fe-arrow-right ms-2" aria-hidden="true" />
+              <Link
+                className="btn btn-underline d-inline-flex align-items-center gap-2"
+                to={homeIntro.ctaTo}
+              >
+                <span>{homeIntro.ctaLabel}</span>
+                <PhosphorIcon name="arrow-right" size={16} weight="regular" />
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Overview (Borderless Shopper Cards) */}
+      {/* Services Overview (Aceternity FocusCards) */}
       <section className="py-10 bg-light">
         <div className="container">
           <div className="d-flex flex-wrap justify-content-between align-items-end mb-7 gap-3">
             <h2 className="mb-0">{homeServices.title}</h2>
-            <Link className="btn btn-underline" to={homeServices.ctaTo}>
-              {homeServices.ctaLabel}
-              <i className="fe fe-arrow-right ms-2" aria-hidden="true" />
+            <Link
+              className="btn btn-underline d-inline-flex align-items-center gap-2"
+              to={homeServices.ctaTo}
+            >
+              <span>{homeServices.ctaLabel}</span>
+              <PhosphorIcon name="arrow-right" size={16} weight="regular" />
             </Link>
           </div>
 
           {featuredServices.length > 0 ? (
-            <div className="row gy-6">
-              {featuredServices.map((service) => (
-                <div className="col-12 col-sm-6 col-lg-3" key={service.id}>
-                  <div className="card bg-transparent border-0 h-100">
-                    {service.image && (
-                      <Link
-                        to={`/contact?subject=${encodeURIComponent(
-                          service.enquirySubject || `Enquiry: ${service.name}`,
-                        )}`}
-                      >
-                        <img
-                          src={service.image}
-                          alt={service.imageAlt || service.name}
-                          className="card-img-top service-card-img"
-                        />
-                      </Link>
-                    )}
-                    <div className="card-body px-0 pt-4 pb-0 d-flex flex-column">
-                      <h5 className="card-title mb-2">{service.name}</h5>
-                      <p className="card-text fs-sm text-gray-500 mb-3 flex-grow-1">
-                        {service.summary}
-                      </p>
-                      <div>
-                        <Link
-                          className="btn btn-underline fs-sm"
-                          to={`/contact?subject=${encodeURIComponent(
-                            service.enquirySubject || `Enquiry: ${service.name}`,
-                          )}`}
-                        >
-                          Enquire
-                          <i className="fe fe-arrow-right ms-2" aria-hidden="true" />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <FocusCards items={featuredServices} actionLabel="Enquire" />
           ) : (
             <div className="text-center py-6">
               <p className="text-muted mb-0">{homeServices.emptyMessage}</p>
@@ -198,9 +174,12 @@ export default function HomePage() {
               </p>
             </div>
             <div className="col-12 col-md-4 text-md-end">
-              <Link className="btn btn-dark btn-lg" to={homeContactCta.ctaTo}>
-                {homeContactCta.ctaLabel}
-                <i className="fe fe-arrow-right ms-2" aria-hidden="true" />
+              <Link
+                className="btn btn-dark btn-lg d-inline-flex align-items-center gap-2"
+                to={homeContactCta.ctaTo}
+              >
+                <span>{homeContactCta.ctaLabel}</span>
+                <PhosphorIcon name="arrow-right" size={18} weight="regular" />
               </Link>
             </div>
           </div>

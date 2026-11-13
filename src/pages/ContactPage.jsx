@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import ContactForm from '../components/ContactForm';
+import PhosphorIcon from '../components/PhosphorIcon';
 import { businessConfig } from '../config/businessConfig';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
@@ -15,7 +16,7 @@ export default function ContactPage() {
       {/* Page Header */}
       <section className="py-8 bg-light border-bottom">
         <div className="container">
-          <h1 className="mb-0">{contact.pageTitle}</h1>
+          <h1 className="mb-0 text-start">{contact.pageTitle}</h1>
         </div>
       </section>
 
@@ -36,9 +37,9 @@ export default function ContactPage() {
               <aside aria-label="Business contact information">
                 {contact.phone && (
                   <div className="mb-5">
-                    <h6 className="heading-xxs mb-2">
-                      <i className="fe fe-phone text-primary me-2" aria-hidden="true" />
-                      {contact.phoneLabel}
+                    <h6 className="heading-xxs mb-2 d-flex align-items-center gap-2">
+                      <PhosphorIcon name="phone" size={16} className="text-dark" />
+                      <span>{contact.phoneLabel}</span>
                     </h6>
                     <p className="text-gray-500 mb-0">
                       <a
@@ -53,9 +54,9 @@ export default function ContactPage() {
 
                 {contact.email && (
                   <div className="mb-5">
-                    <h6 className="heading-xxs mb-2">
-                      <i className="fe fe-mail text-primary me-2" aria-hidden="true" />
-                      {contact.emailLabel}
+                    <h6 className="heading-xxs mb-2 d-flex align-items-center gap-2">
+                      <PhosphorIcon name="mail" size={16} className="text-dark" />
+                      <span>{contact.emailLabel}</span>
                     </h6>
                     <p className="text-gray-500 mb-0">
                       <a
@@ -70,9 +71,9 @@ export default function ContactPage() {
 
                 {contact.address && (
                   <div className="mb-5">
-                    <h6 className="heading-xxs mb-2">
-                      <i className="fe fe-map-pin text-primary me-2" aria-hidden="true" />
-                      {contact.addressLabel}
+                    <h6 className="heading-xxs mb-2 d-flex align-items-center gap-2">
+                      <PhosphorIcon name="map-pin" size={16} className="text-dark" />
+                      <span>{contact.addressLabel}</span>
                     </h6>
                     <p className="text-gray-500 mb-0">{contact.address}</p>
                   </div>
@@ -80,9 +81,9 @@ export default function ContactPage() {
 
                 {Array.isArray(contact.hours) && contact.hours.length > 0 && (
                   <div className="mb-5">
-                    <h6 className="heading-xxs mb-2">
-                      <i className="fe fe-clock text-primary me-2" aria-hidden="true" />
-                      {contact.hoursLabel}
+                    <h6 className="heading-xxs mb-2 d-flex align-items-center gap-2">
+                      <PhosphorIcon name="clock" size={16} className="text-dark" />
+                      <span>{contact.hoursLabel}</span>
                     </h6>
                     <ul className="list-unstyled fs-sm text-gray-500 mb-0">
                       {contact.hours.map((entry) => (
@@ -92,26 +93,6 @@ export default function ContactPage() {
                         </li>
                       ))}
                     </ul>
-                  </div>
-                )}
-
-                {Array.isArray(contact.socialLinks) && contact.socialLinks.length > 0 && (
-                  <div>
-                    <h6 className="heading-xxs mb-3">{contact.channelsLabel}</h6>
-                    <div className="d-flex gap-3">
-                      {contact.socialLinks.map((social) => (
-                        <a
-                          key={social.name}
-                          href={social.href}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="btn btn-sm btn-outline-dark"
-                        >
-                          <i className={`fe ${social.icon} me-1`} aria-hidden="true" />
-                          {social.name}
-                        </a>
-                      ))}
-                    </div>
                   </div>
                 )}
               </aside>

@@ -1,31 +1,46 @@
 export default function BrandLogo({ inverted = false }) {
-  const strokeMain = inverted ? '#ffffff' : '#111111';
-  const textColor = inverted ? 'text-white' : 'text-dark';
+  const stroke = inverted ? '#ffffff' : '#111111';
+  const frameOpacity = inverted ? '0.28' : '0.2';
 
   return (
-    <span className={`d-inline-flex align-items-center gap-2 ${textColor}`}>
+    <span className="d-inline-flex align-items-center gap-3">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 32 32"
-        width="26"
-        height="26"
+        viewBox="0 0 36 36"
+        width="30"
+        height="30"
         fill="none"
         aria-hidden="true"
       >
-        <rect width="32" height="32" fill={inverted ? '#ffffff' : '#111111'} />
-        <path
-          d="M7 22L16 10L25 22"
-          stroke={inverted ? '#111111' : '#ffffff'}
-          strokeWidth="2.5"
-          strokeLinecap="square"
-          strokeLinejoin="miter"
+        <rect
+          x="1"
+          y="1"
+          width="34"
+          height="34"
+          stroke={stroke}
+          strokeOpacity={frameOpacity}
+          strokeWidth="1"
         />
-        <path d="M11 22H21" stroke="#ff6f61" strokeWidth="2.5" strokeLinecap="square" />
+        <path
+          d="M23.5 12.2C22 10.5 19.9 9.5 17.5 9.5C13.1 9.5 9.5 13.3 9.5 18C9.5 22.7 13.1 26.5 17.5 26.5C19.9 26.5 22 25.5 23.5 23.8"
+          stroke={stroke}
+          strokeWidth="1.6"
+          strokeLinecap="square"
+        />
+        <path d="M15 18H26.5" stroke={stroke} strokeWidth="1.4" strokeLinecap="square" />
       </svg>
-      <span className="fw-semibold tracking-tight" style={{ letterSpacing: '0.02em', color: strokeMain }}>
+      <span
+        style={{
+          color: stroke,
+          fontSize: '0.95rem',
+          fontWeight: 500,
+          letterSpacing: '0.24em',
+          textTransform: 'uppercase',
+          lineHeight: 1,
+        }}
+      >
         Crestline
       </span>
     </span>
   );
 }
-

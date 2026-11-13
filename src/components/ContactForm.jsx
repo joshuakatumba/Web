@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { submitContactEnquiry, validateContactForm } from '../services/contactService';
+import PhosphorIcon from './PhosphorIcon';
 
 export default function ContactForm({ initialSubject = '' }) {
   const [values, setValues] = useState({
@@ -83,10 +84,12 @@ export default function ContactForm({ initialSubject = '' }) {
           className={`alert ${status.type === 'success' ? 'alert-success' : 'alert-danger'} mb-5`}
           role="alert"
         >
-          <div className="d-flex align-items-start">
-            <i
-              className={`fe ${status.type === 'success' ? 'fe-check-circle' : 'fe-alert-circle'} me-2 mt-1`}
-              aria-hidden="true"
+          <div className="d-flex align-items-start gap-2">
+            <PhosphorIcon
+              name={status.type === 'success' ? 'check-circle' : 'alert-circle'}
+              size={18}
+              weight="regular"
+              className="mt-1 flex-shrink-0"
             />
             <div>{status.message}</div>
           </div>
@@ -214,10 +217,10 @@ export default function ContactForm({ initialSubject = '' }) {
             Sending Enquiry...
           </>
         ) : (
-          <>
-            Send Message
-            <i className="fe fe-send ms-2" aria-hidden="true" />
-          </>
+          <span className="d-inline-flex align-items-center gap-2">
+            <span>Send Message</span>
+            <PhosphorIcon name="send" size={16} weight="regular" />
+          </span>
         )}
       </button>
     </form>

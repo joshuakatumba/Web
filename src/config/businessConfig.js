@@ -9,7 +9,7 @@ export const businessConfig = {
   brand: {
     name: 'Crestline',
     shortTagline: 'Home and interior services crafted for calm, functional living.',
-    announcementText: 'Crestline Home & Interior Services',
+    announcementText: 'Crestline Home & Interior Studio',
     logoText: 'Crestline',
     primaryCtaLabel: 'Book Consultation',
     primaryCtaTo: '/contact',
@@ -41,19 +41,19 @@ export const businessConfig = {
 
   homeVisualTiles: [
     {
-      title: 'About Crestline',
+      title: 'About',
       to: '/about',
       image: '/images/crestline/tile-about.jpg',
       imageAlt: 'Natural stone, oak, and linen material samples',
     },
     {
-      title: 'Our Services',
+      title: 'Services',
       to: '/services',
       image: '/images/crestline/tile-services.jpg',
       imageAlt: 'Calm dining space with solid timber table',
     },
     {
-      title: 'Start a Project',
+      title: 'Contact',
       to: '/contact',
       image: '/images/crestline/tile-contact.jpg',
       imageAlt: 'Crestline studio desk with architectural plans',
@@ -64,9 +64,9 @@ export const businessConfig = {
     title: 'Crafted Interiors Without the Noise',
     description:
       'At Crestline, every room starts with natural light, honest materials, and careful planning. We guide homeowners from early concepts through final installation.',
-    ctaLabel: 'About Crestline',
+    ctaLabel: 'Learn More',
     ctaTo: '/about',
-    image: '/images/crestline/tile-about.jpg',
+    image: '/images/crestline/tile-about.png'.replace('.png', '.jpg'),
     imageAlt: 'Material selection at Crestline',
     secondaryImage: '/images/crestline/service-styling.jpg',
     secondaryImageAlt: 'Warm bedroom styling by Crestline',
@@ -82,39 +82,39 @@ export const businessConfig = {
   homeContactCta: {
     title: 'Planning a Home Project?',
     description: 'Share your space and timeline with our studio.',
-    ctaLabel: 'Contact Crestline',
+    ctaLabel: 'Contact Us',
     ctaTo: '/contact',
   },
 
   reasonsToChoose: [
     {
       id: 'materials',
-      icon: 'fe-layers',
+      icon: 'layers',
       title: 'Honest Materials',
       description: 'Timber, stone, and natural textiles chosen to age well.',
     },
     {
       id: 'clarity',
-      icon: 'fe-compass',
+      icon: 'compass',
       title: 'Clear Planning',
       description: 'Structured schedules and transparent updates at every step.',
     },
     {
       id: 'craft',
-      icon: 'fe-check-circle',
+      icon: 'check-circle',
       title: 'Careful Execution',
       description: 'Experienced tradespeople focused on clean, lasting finishes.',
     },
     {
       id: 'care',
-      icon: 'fe-home',
+      icon: 'home',
       title: 'Lived In Comfort',
       description: 'Rooms designed for real daily routines, not just photos.',
     },
   ],
 
   about: {
-    pageTitle: 'About Crestline',
+    pageTitle: 'About',
     headerImage: '/images/crestline/tile-services.jpg',
     backgroundTitle: 'Built for Everyday Living',
     backgroundParagraphs: [
@@ -180,7 +180,7 @@ export const businessConfig = {
   },
 
   contact: {
-    pageTitle: 'Contact Crestline',
+    pageTitle: 'Contact',
     formTitle: 'Send a Message',
     sideImage: '/images/crestline/tile-contact.jpg',
     sideImageAlt: 'Crestline design studio desk with floor plans',
@@ -189,9 +189,9 @@ export const businessConfig = {
     addressLabel: 'Studio',
     hoursLabel: 'Hours',
     channelsLabel: 'Channels',
-    email: 'hello@crestlineinteriors.example',
-    phone: '+1 (555) 234 5678',
-    address: '420 Oakwood Avenue, Suite 2B',
+    email: 'studio@crestlineinteriors.com',
+    phone: '+1 (212) 555 0148',
+    address: '420 Mercer Street, Suite 4B, New York',
     hours: [
       { days: 'Monday to Friday', time: '9:00 AM to 5:30 PM' },
       { days: 'Saturday', time: '10:00 AM to 2:00 PM' },
