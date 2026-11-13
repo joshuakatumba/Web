@@ -34,11 +34,11 @@ describe('Small Business Website', () => {
   it('renders Home page with hero, reasons, intro, services, and CTA', () => {
     renderWithRouter(['/']);
     expect(
-      screen.getByRole('heading', { name: /Reliable Services Built Around Your Goals/i }),
+      screen.getByRole('heading', { name: /Reliable Services for Your Business/i }),
     ).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Clear Communication' })).toBeInTheDocument();
-    expect(screen.getByText(/Our Core Services/i)).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Explore Our Services/i })).toHaveAttribute(
+    expect(screen.getByRole('heading', { name: 'Our Services' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /View Services/i })).toHaveAttribute(
       'href',
       '/services',
     );
@@ -59,7 +59,7 @@ describe('Small Business Website', () => {
 
   it('filters services by category and pre-fills contact subject on enquire', () => {
     renderWithRouter(['/services']);
-    expect(screen.getByRole('heading', { name: /Our Services/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /^Services$/i })).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole('button', { name: 'Advisory' }));
     expect(screen.getByText('Consultation & Planning')).toBeInTheDocument();
@@ -68,10 +68,10 @@ describe('Small Business Website', () => {
     fireEvent.click(screen.getByRole('button', { name: 'All' }));
     expect(screen.getByText('Core Service Delivery')).toBeInTheDocument();
 
-    const enquireLinks = screen.getAllByRole('link', { name: /Enquire About This Service/i });
+    const enquireLinks = screen.getAllByRole('link', { name: /^Enquire$/i });
     fireEvent.click(enquireLinks[0]);
 
-    expect(screen.getByRole('heading', { name: /Send an Enquiry/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Send a Message/i })).toBeInTheDocument();
     expect(screen.getByLabelText(/Subject/i)).toHaveValue('Enquiry: Consultation & Planning');
   });
 

@@ -27,8 +27,7 @@ export default function ContactPage() {
               </li>
             </ol>
           </nav>
-          <h1 className="mb-3">{contact.pageTitle}</h1>
-          <p className="fs-lg text-gray-500 mb-0 col-lg-8 px-0">{contact.lead}</p>
+          <h1 className="mb-0">{contact.pageTitle}</h1>
         </div>
       </section>
 
@@ -38,10 +37,18 @@ export default function ContactPage() {
           <div className="row gy-8 justify-content-between">
             {/* Contact Information */}
             <div className="col-12 col-lg-4">
+              {contact.sideImage && (
+                <img
+                  src={contact.sideImage}
+                  alt={contact.sideImageAlt || contact.pageTitle}
+                  className="img-fluid contact-side-img mb-6"
+                />
+              )}
+
               <aside aria-label="Business contact information">
                 {contact.phone && (
-                  <div className="mb-6">
-                    <h6 className="heading-xxs mb-3">
+                  <div className="mb-5">
+                    <h6 className="heading-xxs mb-2">
                       <i className="fe fe-phone text-primary me-2" aria-hidden="true" />
                       {contact.phoneLabel}
                     </h6>
@@ -57,8 +64,8 @@ export default function ContactPage() {
                 )}
 
                 {contact.email && (
-                  <div className="mb-6">
-                    <h6 className="heading-xxs mb-3">
+                  <div className="mb-5">
+                    <h6 className="heading-xxs mb-2">
                       <i className="fe fe-mail text-primary me-2" aria-hidden="true" />
                       {contact.emailLabel}
                     </h6>
@@ -74,8 +81,8 @@ export default function ContactPage() {
                 )}
 
                 {contact.address && (
-                  <div className="mb-6">
-                    <h6 className="heading-xxs mb-3">
+                  <div className="mb-5">
+                    <h6 className="heading-xxs mb-2">
                       <i className="fe fe-map-pin text-primary me-2" aria-hidden="true" />
                       {contact.addressLabel}
                     </h6>
@@ -84,8 +91,8 @@ export default function ContactPage() {
                 )}
 
                 {Array.isArray(contact.hours) && contact.hours.length > 0 && (
-                  <div className="mb-6">
-                    <h6 className="heading-xxs mb-3">
+                  <div className="mb-5">
+                    <h6 className="heading-xxs mb-2">
                       <i className="fe fe-clock text-primary me-2" aria-hidden="true" />
                       {contact.hoursLabel}
                     </h6>
@@ -124,13 +131,8 @@ export default function ContactPage() {
 
             {/* Enquiry Form */}
             <div className="col-12 col-lg-7">
-              <div className="card border p-6 p-md-8">
-                <h2 className="h4 mb-2">{contact.formTitle}</h2>
-                <p className="fs-sm text-gray-500 mb-6">
-                  All fields marked with <span className="text-danger">*</span> are required.
-                </p>
-                <ContactForm initialSubject={initialSubject} />
-              </div>
+              <h2 className="h4 mb-5">{contact.formTitle}</h2>
+              <ContactForm initialSubject={initialSubject} />
             </div>
           </div>
         </div>
@@ -138,4 +140,3 @@ export default function ContactPage() {
     </>
   );
 }
-

@@ -9,23 +9,25 @@ export default function AboutPage() {
 
   return (
     <>
-      {/* Page Header */}
-      <section className="py-8 bg-light border-bottom">
-        <div className="container">
+      {/* Visual Page Header */}
+      <section
+        className="py-10 hero-overlay"
+        style={{ backgroundImage: `url(${about.headerImage || about.backgroundImage})` }}
+      >
+        <div className="container py-4">
           <nav aria-label="breadcrumb" className="mb-3">
             <ol className="breadcrumb mb-0 fs-xs">
               <li className="breadcrumb-item">
-                <Link className="text-gray-500 text-decoration-none" to="/">
+                <Link className="text-white opacity-75 text-decoration-none" to="/">
                   Home
                 </Link>
               </li>
-              <li className="breadcrumb-item active text-dark" aria-current="page">
+              <li className="breadcrumb-item active text-white" aria-current="page">
                 About
               </li>
             </ol>
           </nav>
-          <h1 className="mb-3">{about.pageTitle}</h1>
-          <p className="fs-lg text-gray-500 mb-0 col-lg-8 px-0">{about.lead}</p>
+          <h1 className="text-white mb-0">{about.pageTitle}</h1>
         </div>
       </section>
 
@@ -41,7 +43,6 @@ export default function AboutPage() {
               />
             </div>
             <div className="col-12 col-lg-5 offset-lg-1">
-              <p className="heading-xxs text-gray-400 mb-2">{about.storyEyebrow}</p>
               <h2 className="mb-4">{about.backgroundTitle}</h2>
               {about.backgroundParagraphs.map((paragraph, idx) => (
                 <p className="text-gray-500 mb-4" key={idx}>
@@ -64,27 +65,31 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission & Vision */}
+      {/* Mission & Vision with Visuals */}
       <section className="py-10 bg-light">
         <div className="container">
-          <div className="row gy-5">
+          <div className="row gy-6">
             <div className="col-12 col-md-6">
-              <div className="card border h-100 bg-white p-6 p-md-7">
-                <div className="mb-4">
-                  <i className="fe fe-target fs-lg text-primary" aria-hidden="true" />
-                </div>
-                <h3 className="mb-3">{about.missionTitle}</h3>
-                <p className="text-gray-500 mb-0">{about.mission}</p>
-              </div>
+              {about.missionImage && (
+                <img
+                  src={about.missionImage}
+                  alt={about.missionImageAlt || about.missionTitle}
+                  className="img-fluid service-card-img mb-4"
+                />
+              )}
+              <h3 className="mb-3">{about.missionTitle}</h3>
+              <p className="text-gray-500 mb-0">{about.mission}</p>
             </div>
             <div className="col-12 col-md-6">
-              <div className="card border h-100 bg-white p-6 p-md-7">
-                <div className="mb-4">
-                  <i className="fe fe-eye fs-lg text-primary" aria-hidden="true" />
-                </div>
-                <h3 className="mb-3">{about.visionTitle}</h3>
-                <p className="text-gray-500 mb-0">{about.vision}</p>
-              </div>
+              {about.visionImage && (
+                <img
+                  src={about.visionImage}
+                  alt={about.visionImageAlt || about.visionTitle}
+                  className="img-fluid service-card-img mb-4"
+                />
+              )}
+              <h3 className="mb-3">{about.visionTitle}</h3>
+              <p className="text-gray-500 mb-0">{about.vision}</p>
             </div>
           </div>
         </div>
@@ -92,25 +97,18 @@ export default function AboutPage() {
 
       {/* Core Values */}
       {Array.isArray(about.coreValues) && about.coreValues.length > 0 && (
-        <section className="py-10">
+        <section className="py-10 border-bottom">
           <div className="container">
-            <div className="row justify-content-center mb-8">
-              <div className="col-12 col-md-8 text-center">
-                <p className="heading-xxs text-gray-400 mb-2">{about.valuesEyebrow}</p>
-                <h2 className="mb-0">{about.valuesTitle}</h2>
-              </div>
-            </div>
+            <h2 className="mb-7">{about.valuesTitle}</h2>
 
             <div className="row gy-5">
               {about.coreValues.map((value, index) => (
                 <div className="col-12 col-sm-6 col-lg-3" key={value.title}>
-                  <div className="card border h-100 p-5">
-                    <span className="heading-xxs text-primary mb-3">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <h5 className="mb-3">{value.title}</h5>
-                    <p className="fs-sm text-gray-500 mb-0">{value.description}</p>
-                  </div>
+                  <span className="heading-xxs text-primary d-block mb-2">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <h5 className="mb-2">{value.title}</h5>
+                  <p className="fs-sm text-gray-500 mb-0">{value.description}</p>
                 </div>
               ))}
             </div>
@@ -118,11 +116,10 @@ export default function AboutPage() {
         </section>
       )}
 
-      {/* CTA */}
-      <section className="py-10 bg-light border-top">
+      {/* Clean CTA */}
+      <section className="py-10">
         <div className="container text-center">
-          <h2 className="mb-3">{about.ctaTitle}</h2>
-          <p className="text-gray-500 mb-6">{about.ctaDescription}</p>
+          <h2 className="mb-5">{about.ctaTitle}</h2>
           <div className="d-flex flex-wrap justify-content-center gap-3">
             <Link className="btn btn-dark" to={about.ctaPrimaryTo}>
               {about.ctaPrimaryLabel}

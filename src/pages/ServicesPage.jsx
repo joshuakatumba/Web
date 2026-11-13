@@ -40,8 +40,7 @@ export default function ServicesPage() {
               </li>
             </ol>
           </nav>
-          <h1 className="mb-3">{servicesPage.pageTitle}</h1>
-          <p className="fs-lg text-gray-500 mb-0 col-lg-8 px-0">{servicesPage.lead}</p>
+          <h1 className="mb-0">{servicesPage.pageTitle}</h1>
         </div>
       </section>
 
@@ -73,7 +72,7 @@ export default function ServicesPage() {
               <span className="text-muted">Loading services...</span>
             </div>
           ) : filteredServices.length === 0 ? (
-            <div className="card border p-8 text-center">
+            <div className="py-8 text-center">
               <h5 className="mb-2">{servicesPage.emptyTitle}</h5>
               <p className="text-muted mb-4">{servicesPage.emptyDescription}</p>
               <div>
@@ -90,47 +89,36 @@ export default function ServicesPage() {
               </div>
             </div>
           ) : (
-            <div className="row gy-6">
+            <div className="row gy-7">
               {filteredServices.map((service) => (
                 <div className="col-12 col-md-6" key={service.id}>
-                  <div className="card border h-100">
+                  <div className="card border-0 h-100">
                     {service.image && (
-                      <img
-                        src={service.image}
-                        alt={service.imageAlt || service.name}
-                        className="card-img-top service-card-img"
-                      />
+                      <Link
+                        to={`/contact?subject=${encodeURIComponent(
+                          service.enquirySubject || `Enquiry: ${service.name}`,
+                        )}`}
+                      >
+                        <img
+                          src={service.image}
+                          alt={service.imageAlt || service.name}
+                          className="card-img-top service-card-img"
+                        />
+                      </Link>
                     )}
-                    <div className="card-body d-flex flex-column p-6">
-                      <div className="d-flex align-items-center justify-content-between mb-3">
+                    <div className="card-body px-0 pt-4 pb-0 d-flex flex-column">
+                      <div className="d-flex align-items-center justify-content-between mb-2">
+                        <h3 className="h4 mb-0">{service.name}</h3>
                         {service.category && (
                           <span className="heading-xxs text-primary">{service.category}</span>
                         )}
-                        {service.icon && (
-                          <i className={`fe ${service.icon} text-gray-400`} aria-hidden="true" />
-                        )}
                       </div>
 
-                      <h3 className="h4 mb-3">{service.name}</h3>
-                      <p className="text-gray-500 mb-4">{service.summary}</p>
+                      <p className="text-gray-500 mb-3 flex-grow-1">{service.summary}</p>
 
-                      {Array.isArray(service.details) && service.details.length > 0 && (
-                        <ul className="list-unstyled fs-sm text-gray-600 mb-6 flex-grow-1">
-                          {service.details.map((item, idx) => (
-                            <li className="mb-2 d-flex align-items-start" key={idx}>
-                              <i
-                                className="fe fe-check text-success me-2 mt-1"
-                                aria-hidden="true"
-                              />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-
-                      <div className="mt-auto pt-3 border-top">
+                      <div>
                         <Link
-                          className="btn btn-dark w-100"
+                          className="btn btn-underline"
                           to={`/contact?subject=${encodeURIComponent(
                             service.enquirySubject || `Enquiry: ${service.name}`,
                           )}`}
@@ -148,16 +136,28 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Visual Gallery Strip */}
+      {Array.isArray(servicesPage.galleryImages) && servicesPage.galleryImages.length > 0 && (
+        <section className="py-8 bg-light">
+          <div className="container">
+            <div className="row g-4">
+              {servicesPage.galleryImages.map((img, idx) => (
+                <div className="col-6 col-md-3" key={idx}>
+                  <img src={img.src} alt={img.alt} className="img-fluid gallery-thumb" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Custom Request Banner */}
-      <section className="py-10 bg-light border-top">
+      <section className="py-10 border-top">
         <div className="container text-center">
-          <h2 className="mb-3">{servicesPage.customBannerTitle}</h2>
-          <p className="text-gray-500 mb-6 col-lg-7 mx-auto">
-            {servicesPage.customBannerDescription}
-          </p>
-          <Link className="btn btn-primary btn-lg" to="/contact">
+          <h2 className="mb-5">{servicesPage.customBannerTitle}</h2>
+          <Link className="btn btn-dark btn-lg" to="/contact">
             {servicesPage.customBannerCtaLabel}
-            <i className="fe fe-mail ms-2" aria-hidden="true" />
+            <i className="fe fe-arrow-right ms-2" aria-hidden="true" />
           </Link>
         </div>
       </section>

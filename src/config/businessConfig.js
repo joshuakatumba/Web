@@ -1,8 +1,8 @@
 /**
  * Configurable Business Details & Site Copy
  * ---------------------------------------------------------------------------
- * Update this file to customize the business identity, navigation, page
- * headings, about content, and contact details without modifying components.
+ * Update this file to customize the business identity, navigation, headings,
+ * imagery, and contact details without modifying page components.
  *
  * Set optional contact fields to `null` or `""` to hide them gracefully.
  */
@@ -10,10 +10,10 @@
 export const businessConfig = {
   brand: {
     name: 'Your Business Name',
-    shortTagline: 'Quality-Focused Services & Client Solutions',
-    announcementText: 'Welcome — Accepting new client enquiries',
+    shortTagline: 'Quality services and dependable client support.',
+    announcementText: 'Accepting new client enquiries',
     logoText: 'Your Business.',
-    primaryCtaLabel: 'Enquire Now',
+    primaryCtaLabel: 'Contact Us',
     primaryCtaTo: '/contact',
   },
 
@@ -26,49 +26,64 @@ export const businessConfig = {
 
   footer: {
     navigationTitle: 'Navigation',
-    contactTitle: 'Contact Details',
+    contactTitle: 'Contact',
   },
 
   hero: {
-    eyebrow: 'Tailored Solutions for Modern Needs',
-    headline: 'Reliable Services Built Around Your Goals',
-    description:
-      'We partner with individuals and growing businesses to deliver thoughtful, dependable work with clear communication from first enquiry to completion.',
-    primaryCtaLabel: 'Explore Our Services',
+    headline: 'Reliable Services for Your Business',
+    description: 'Thoughtful work and clear communication from start to finish.',
+    primaryCtaLabel: 'View Services',
     primaryCtaTo: '/services',
-    secondaryCtaLabel: 'Get in Touch',
+    secondaryCtaLabel: 'Contact Us',
     secondaryCtaTo: '/contact',
     heroImage: '/images/covers/cover-1.jpg',
     heroImageAlt: 'Featured business showcase',
   },
 
+  homeVisualTiles: [
+    {
+      title: 'About Us',
+      to: '/about',
+      image: '/images/covers/cover-2.jpg',
+      imageAlt: 'About our business',
+    },
+    {
+      title: 'Our Services',
+      to: '/services',
+      image: '/images/covers/cover-3.jpg',
+      imageAlt: 'Explore our services',
+    },
+    {
+      title: 'Get in Touch',
+      to: '/contact',
+      image: '/images/covers/cover-4.jpg',
+      imageAlt: 'Contact our team',
+    },
+  ],
+
   homeIntro: {
-    eyebrow: 'Who We Are',
-    title: 'Practical Expertise. Personal Attention.',
+    title: 'Who We Are',
     description:
-      'Every project begins with listening carefully to what you need. Update this section in src/config/businessConfig.js with your specific business introduction and key offerings.',
-    ctaLabel: 'Learn More About Us',
+      'Every project starts by listening carefully to what you need. Update this introduction in src/config/businessConfig.js with your own business overview.',
+    ctaLabel: 'Learn More',
     ctaTo: '/about',
-    image: '/images/covers/cover-2.jpg',
-    imageAlt: 'Our workspace and approach',
+    image: '/images/covers/cover-25.jpg',
+    imageAlt: 'Our workspace',
+    secondaryImage: '/images/covers/cover-26.jpg',
+    secondaryImageAlt: 'Our approach',
   },
 
   homeServices: {
-    eyebrow: 'What We Offer',
-    title: 'Our Core Services',
-    description:
-      'Explore our services below or send an enquiry to discuss your specific needs.',
+    title: 'Our Services',
     emptyMessage: 'Services are currently being updated.',
-    ctaLabel: 'View All Services',
+    ctaLabel: 'All Services',
     ctaTo: '/services',
   },
 
   homeContactCta: {
-    eyebrow: 'Start a Conversation',
-    title: 'Ready to Discuss Your Requirements?',
-    description:
-      'Send us an enquiry online or reach out using our direct contact channels.',
-    ctaLabel: 'Contact Us Today',
+    title: 'Ready to Start?',
+    description: 'Send us a message and our team will respond promptly.',
+    ctaLabel: 'Contact Us',
     ctaTo: '/contact',
   },
 
@@ -77,76 +92,71 @@ export const businessConfig = {
       id: 'clarity',
       icon: 'fe-compass',
       title: 'Clear Communication',
-      description:
-        'Direct, responsive updates at every stage so you always know what is happening next.',
+      description: 'Direct updates at every stage.',
     },
     {
       id: 'quality',
       icon: 'fe-check-circle',
       title: 'Dependable Delivery',
-      description:
-        'Consistent standards and careful attention to detail across every engagement.',
+      description: 'Consistent standards on every project.',
     },
     {
       id: 'tailored',
       icon: 'fe-sliders',
       title: 'Tailored Approach',
-      description:
-        'Practical solutions shaped around your actual requirements rather than one-size-fits-all templates.',
+      description: 'Solutions shaped around your goals.',
     },
     {
       id: 'support',
       icon: 'fe-message-square',
       title: 'Dedicated Support',
-      description:
-        'Accessible assistance before, during, and after your project or service request.',
+      description: 'Responsive help whenever you need it.',
     },
   ],
 
   about: {
     pageTitle: 'About Us',
-    lead: 'Learn more about our purpose, how we work, and the principles that guide every client relationship.',
-    storyEyebrow: 'Our Story',
-    backgroundTitle: 'Business Background',
+    headerImage: '/images/covers/cover-4.jpg',
+    backgroundTitle: 'Our Business',
     backgroundParagraphs: [
-      'Configure your business background here in src/config/businessConfig.js. Share how your business started, who you serve, and what motivates your work.',
-      'This section is intentionally structured so you can present an authentic story without fabricated milestones or unverified claims.',
+      'Configure your business background here in src/config/businessConfig.js. Share who you serve and what guides your work.',
     ],
     backgroundImage: '/images/covers/cover-3.jpg',
     backgroundImageAlt: 'About our business',
     missionTitle: 'Our Mission',
     mission:
-      'To provide dependable, thoughtfully crafted services that solve real problems for our clients with integrity and clarity.',
+      'To provide dependable, thoughtfully crafted services with integrity and clarity.',
+    missionImage: '/images/products/product-13.jpg',
+    missionImageAlt: 'Our mission',
     visionTitle: 'Our Vision',
     vision:
-      'To be a trusted long-term partner known for consistent quality, honest communication, and measurable value.',
-    valuesEyebrow: 'Principles',
-    valuesTitle: 'Our Core Values',
+      'To be a trusted partner known for consistent quality and honest communication.',
+    visionImage: '/images/products/product-14.jpg',
+    visionImageAlt: 'Our vision',
+    valuesTitle: 'Core Values',
     coreValues: [
       {
         title: 'Integrity',
-        description: 'Honest recommendations, transparent expectations, and accountable follow-through.',
+        description: 'Honest advice and transparent expectations.',
       },
       {
         title: 'Craftsmanship',
-        description: 'Careful execution and pride in the details that make work last.',
+        description: 'Careful attention to every detail.',
       },
       {
         title: 'Responsiveness',
-        description: 'Timely replies and proactive communication when you need answers.',
+        description: 'Timely answers when you reach out.',
       },
       {
         title: 'Respect',
-        description: 'Valuing your time, budget, and unique business context.',
+        description: 'Valuing your time and unique needs.',
       },
     ],
     businessDetails: [
-      { label: 'Business Type', value: 'Configurable in businessConfig.js' },
-      { label: 'Service Area', value: 'Local & Remote (Configure your region)' },
-      { label: 'Enquiry Response', value: 'Within 1–2 business days' },
+      { label: 'Service Area', value: 'Local & Remote' },
+      { label: 'Response Time', value: '1 to 2 business days' },
     ],
     ctaTitle: 'Interested in Working Together?',
-    ctaDescription: 'Browse our services or contact us directly with your questions.',
     ctaPrimaryLabel: 'View Services',
     ctaPrimaryTo: '/services',
     ctaSecondaryLabel: 'Contact Us',
@@ -154,33 +164,36 @@ export const businessConfig = {
   },
 
   servicesPage: {
-    pageTitle: 'Our Services',
-    lead: 'Explore our range of offerings below. Select any service to send a tailored enquiry.',
-    enquireButtonLabel: 'Enquire About This Service',
+    pageTitle: 'Services',
+    enquireButtonLabel: 'Enquire',
     emptyTitle: 'No Services Found',
-    emptyDescription:
-      'No services match the selected filter. Please view all services or contact us for custom requests.',
+    emptyDescription: 'No services match the selected category.',
+    galleryImages: [
+      { src: '/images/products/product-15.jpg', alt: 'Service showcase 1' },
+      { src: '/images/products/product-16.jpg', alt: 'Service showcase 2' },
+      { src: '/images/products/product-17.jpg', alt: 'Service showcase 3' },
+      { src: '/images/products/product-18.jpg', alt: 'Service showcase 4' },
+    ],
     customBannerTitle: 'Need Something Specific?',
-    customBannerDescription:
-      'If your requirements fall outside our standard service list, reach out and let us know what you are looking for.',
-    customBannerCtaLabel: 'Send a Custom Enquiry',
+    customBannerCtaLabel: 'Send an Enquiry',
   },
 
   contact: {
-    pageTitle: 'Contact Us',
-    lead: 'Have a question or ready to discuss a service? Send us a message using the form below and our team will respond promptly.',
-    formTitle: 'Send an Enquiry',
-    phoneLabel: 'Call Us',
-    emailLabel: 'Email Us',
-    addressLabel: 'Visit Us',
-    hoursLabel: 'Business Hours',
-    channelsLabel: 'Other Channels',
+    pageTitle: 'Contact',
+    formTitle: 'Send a Message',
+    sideImage: '/images/covers/cover-26.jpg',
+    sideImageAlt: 'Contact our team',
+    phoneLabel: 'Phone',
+    emailLabel: 'Email',
+    addressLabel: 'Address',
+    hoursLabel: 'Hours',
+    channelsLabel: 'Channels',
     email: 'contact@yourbusiness.example',
-    phone: '+1 (000) 000-0000',
+    phone: '+1 (000) 000 0000',
     address: '123 Business Street, Suite 100, Your City',
     hours: [
-      { days: 'Monday – Friday', time: '9:00 AM – 5:00 PM' },
-      { days: 'Saturday – Sunday', time: 'By Appointment / Closed' },
+      { days: 'Monday to Friday', time: '9:00 AM to 5:00 PM' },
+      { days: 'Saturday and Sunday', time: 'By Appointment' },
     ],
     socialLinks: [
       // Add your real URLs here when available, or leave empty to hide
