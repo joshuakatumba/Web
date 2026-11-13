@@ -2,17 +2,10 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { businessConfig } from '../config/businessConfig';
 
-const navItems = [
-  { to: '/', label: 'Home', end: true },
-  { to: '/about', label: 'About' },
-  { to: '/services', label: 'Services' },
-  { to: '/contact', label: 'Contact' },
-];
-
 export default function Layout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
-  const { brand, contact } = businessConfig;
+  const { brand, contact, footer, navigation } = businessConfig;
 
   useEffect(() => {
     setMenuOpen(false);
@@ -74,7 +67,7 @@ export default function Layout({ children }) {
             aria-label="Primary navigation"
           >
             <ul className="navbar-nav mx-auto">
-              {navItems.map((item) => (
+              {navigation.map((item) => (
                 <li className="nav-item" key={item.to}>
                   <NavLink
                     to={item.to}
@@ -88,8 +81,8 @@ export default function Layout({ children }) {
             </ul>
 
             <div className="d-flex align-items-center mt-3 mt-lg-0">
-              <Link className="btn btn-sm btn-dark w-100 w-lg-auto" to="/contact">
-                Enquire Now
+              <Link className="btn btn-sm btn-dark w-100 w-lg-auto" to={brand.primaryCtaTo}>
+                {brand.primaryCtaLabel}
                 <i className="fe fe-arrow-right ms-2" aria-hidden="true" />
               </Link>
             </div>
@@ -131,9 +124,9 @@ export default function Layout({ children }) {
               </div>
 
               <div className="col-6 col-md-3 offset-md-1">
-                <h6 className="heading-xxs mb-4 text-white">Navigation</h6>
+                <h6 className="heading-xxs mb-4 text-white">{footer.navigationTitle}</h6>
                 <ul className="list-unstyled mb-0">
-                  {navItems.map((item) => (
+                  {navigation.map((item) => (
                     <li className="mb-2" key={item.to}>
                       <Link className="text-gray-350 text-decoration-none fs-sm" to={item.to}>
                         {item.label}
@@ -144,7 +137,7 @@ export default function Layout({ children }) {
               </div>
 
               <div className="col-12 col-md-4">
-                <h6 className="heading-xxs mb-4 text-white">Contact Details</h6>
+                <h6 className="heading-xxs mb-4 text-white">{footer.contactTitle}</h6>
                 <ul className="list-unstyled mb-0 fs-sm text-gray-350">
                   {contact.email && (
                     <li className="mb-2">

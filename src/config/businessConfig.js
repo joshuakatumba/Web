@@ -1,11 +1,9 @@
 /**
- * Configurable Business Details
+ * Configurable Business Details & Site Copy
  * ---------------------------------------------------------------------------
- * Update this file to customize the business identity, contact details,
- * about content, and navigation without modifying page components.
+ * Update this file to customize the business identity, navigation, page
+ * headings, about content, and contact details without modifying components.
  *
- * Fields marked with placeholder text are intentionally configurable so no
- * company history, addresses, phone numbers, or achievements are invented.
  * Set optional contact fields to `null` or `""` to hide them gracefully.
  */
 
@@ -15,6 +13,20 @@ export const businessConfig = {
     shortTagline: 'Quality-Focused Services & Client Solutions',
     announcementText: 'Welcome — Accepting new client enquiries',
     logoText: 'Your Business.',
+    primaryCtaLabel: 'Enquire Now',
+    primaryCtaTo: '/contact',
+  },
+
+  navigation: [
+    { to: '/', label: 'Home', end: true },
+    { to: '/about', label: 'About' },
+    { to: '/services', label: 'Services' },
+    { to: '/contact', label: 'Contact' },
+  ],
+
+  footer: {
+    navigationTitle: 'Navigation',
+    contactTitle: 'Contact Details',
   },
 
   hero: {
@@ -35,8 +47,29 @@ export const businessConfig = {
     title: 'Practical Expertise. Personal Attention.',
     description:
       'Every project begins with listening carefully to what you need. Update this section in src/config/businessConfig.js with your specific business introduction and key offerings.',
+    ctaLabel: 'Learn More About Us',
+    ctaTo: '/about',
     image: '/images/covers/cover-2.jpg',
     imageAlt: 'Our workspace and approach',
+  },
+
+  homeServices: {
+    eyebrow: 'What We Offer',
+    title: 'Our Core Services',
+    description:
+      'Explore our services below or send an enquiry to discuss your specific needs.',
+    emptyMessage: 'Services are currently being updated.',
+    ctaLabel: 'View All Services',
+    ctaTo: '/services',
+  },
+
+  homeContactCta: {
+    eyebrow: 'Start a Conversation',
+    title: 'Ready to Discuss Your Requirements?',
+    description:
+      'Send us an enquiry online or reach out using our direct contact channels.',
+    ctaLabel: 'Contact Us Today',
+    ctaTo: '/contact',
   },
 
   reasonsToChoose: [
@@ -73,6 +106,7 @@ export const businessConfig = {
   about: {
     pageTitle: 'About Us',
     lead: 'Learn more about our purpose, how we work, and the principles that guide every client relationship.',
+    storyEyebrow: 'Our Story',
     backgroundTitle: 'Business Background',
     backgroundParagraphs: [
       'Configure your business background here in src/config/businessConfig.js. Share how your business started, who you serve, and what motivates your work.',
@@ -80,10 +114,14 @@ export const businessConfig = {
     ],
     backgroundImage: '/images/covers/cover-3.jpg',
     backgroundImageAlt: 'About our business',
+    missionTitle: 'Our Mission',
     mission:
       'To provide dependable, thoughtfully crafted services that solve real problems for our clients with integrity and clarity.',
+    visionTitle: 'Our Vision',
     vision:
       'To be a trusted long-term partner known for consistent quality, honest communication, and measurable value.',
+    valuesEyebrow: 'Principles',
+    valuesTitle: 'Our Core Values',
     coreValues: [
       {
         title: 'Integrity',
@@ -107,21 +145,42 @@ export const businessConfig = {
       { label: 'Service Area', value: 'Local & Remote (Configure your region)' },
       { label: 'Enquiry Response', value: 'Within 1–2 business days' },
     ],
+    ctaTitle: 'Interested in Working Together?',
+    ctaDescription: 'Browse our services or contact us directly with your questions.',
+    ctaPrimaryLabel: 'View Services',
+    ctaPrimaryTo: '/services',
+    ctaSecondaryLabel: 'Contact Us',
+    ctaSecondaryTo: '/contact',
+  },
+
+  servicesPage: {
+    pageTitle: 'Our Services',
+    lead: 'Explore our range of offerings below. Select any service to send a tailored enquiry.',
+    enquireButtonLabel: 'Enquire About This Service',
+    emptyTitle: 'No Services Found',
+    emptyDescription:
+      'No services match the selected filter. Please view all services or contact us for custom requests.',
+    customBannerTitle: 'Need Something Specific?',
+    customBannerDescription:
+      'If your requirements fall outside our standard service list, reach out and let us know what you are looking for.',
+    customBannerCtaLabel: 'Send a Custom Enquiry',
   },
 
   contact: {
     pageTitle: 'Contact Us',
     lead: 'Have a question or ready to discuss a service? Send us a message using the form below and our team will respond promptly.',
+    formTitle: 'Send an Enquiry',
+    phoneLabel: 'Call Us',
+    emailLabel: 'Email Us',
+    addressLabel: 'Visit Us',
+    hoursLabel: 'Business Hours',
+    channelsLabel: 'Other Channels',
     email: 'contact@yourbusiness.example',
     phone: '+1 (000) 000-0000',
     address: '123 Business Street, Suite 100, Your City',
     hours: [
       { days: 'Monday – Friday', time: '9:00 AM – 5:00 PM' },
       { days: 'Saturday – Sunday', time: 'By Appointment / Closed' },
-    ],
-    channels: [
-      { label: 'Email', value: 'contact@yourbusiness.example', href: 'mailto:contact@yourbusiness.example', icon: 'fe-mail' },
-      { label: 'Phone', value: '+1 (000) 000-0000', href: 'tel:+10000000000', icon: 'fe-phone' },
     ],
     socialLinks: [
       // Add your real URLs here when available, or leave empty to hide
@@ -130,4 +189,3 @@ export const businessConfig = {
     ],
   },
 };
-
